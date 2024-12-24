@@ -6,6 +6,29 @@ Department */
 
 // corrected code here
 
+//With array
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cout << "How many Fibonacci numbers : ";
+    cin >> n;
+    int a[n];// Declaring an a based array on the number of Fibonacci numbers n
+    a[0]=0;
+    a[1]=1;
+    for (int i = 2; i < n; i++) {
+        a[i] = a[i-1] + a[i-2];
+    }
+    cout << endl;
+
+    for (int i = 0; i < n; i++) {
+cout << a[i] << " ";
+    }
+}
+
+//Without array
 #include<iostream>
 #include<cmath>
 using namespace std;
