@@ -48,6 +48,5 @@ int main ()
                 cout <<"= " << number1 * number2 << endl;
                 break;
             }
-
         }
     }
