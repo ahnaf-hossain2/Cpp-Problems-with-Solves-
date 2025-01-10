@@ -43,7 +43,7 @@
 using namespace std;
 
 int Prime_Composite(int number) {
-    for (int i = 2; i < ( number / 2) ; i++)
+    for (int i = 2; i <= ( number / 2) ; i++)
         {
             if ( number % i == 0)
             {
@@ -59,16 +59,16 @@ int main () {
     cin >> number;
     if (number == 0 || number == 1) {
         cout << "Neither prime or composite.";
+        return 0;
     }
 
     int result = Prime_Composite(number);
     if (result == 1)
     {
-        cout << "Prime Number";
+        cout << "The number is a prime number.";
     }
 
-    else if (result == 0)
-        cout << "Composite Number";
-    else
-        cout << "Nor composite nor prime.";
+    else if (result == 0) {
+        cout << "The number is a composite number.";
+    }
 }
