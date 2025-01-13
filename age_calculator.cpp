@@ -48,7 +48,7 @@ int main( ) {
     int year1, year2, month1, month2, day1, day2;
     cout << "***********************************" << endl;
     cout << "*         Age Calculator          *" << endl;
-    cout << "***********************************" << endl;
+    cout << "***********************************" << endl << endl;
     cout << "Enter your date of birth (YYYY MM DD): ";
     cin >> year1 >> month1 >> day1;
     cout << "Enter the current date (YYYY MM DD): ";
