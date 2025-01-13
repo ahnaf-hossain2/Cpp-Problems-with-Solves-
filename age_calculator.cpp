@@ -3,70 +3,57 @@
 // calculates your age in years, months and days. You must check for leap years also. 
 // Write a separate function to check for leap year.
 
+
 #include <iostream>
 using namespace std;
 
-bool Is_leap_year(int year) {
-    return (year % 4 == 0 && year % 100 != 0 || year % 400 == 0);
-}
-
-int Days_In_Month(int year, int month) {
-    if (month == 2) {
-        if ((Is_leap_year)(year))
-        return 29;
-        else
-            return 28;
-    }
-
-    if (month == 4 || month == 6 || month == 9 || month == 11) {
-        return 30;
-    }
-    return 31;
-}
-
-void Age_calculator(int y1, int y2, int m1, int m2, int d1, int d2) {
-    if (y1 > y2 || (y1==y2 && m1>m2) || (y1==y2 && m1 == m2 && d1 > d2)) {
-        cout << "Invalid date of birth." << endl;
-    }
-
-    int years = y2 - y1;
-    int months = m2 - m1;
-    int days = d2 - d1;
-
-    // // Adjust for negative days
-    // if (days < 0) {
-    //     months -= 1;
-    //     days += Days_In_Month(y2, (m2 == 1 ? 12 : m2 - 1));
-    // }
-
-    // // Adjust for negative months
-    // if (months < 0) {
-    //     years -= 1;
-    //     months += 12;
-    // }
-
-    cout << "Your age is " << years << " years, " << months << " months, and " << days << " days." << endl;
-}
-
-int main () {
-    int y1, y2, m1, m2, d1, d2;
-    cout << "Enter your date of birth in YYYY MM DD format: ";
-    cin >> y1 >> m1 >> d1;
-    cout << "Enter the current date in YYYY MM DD format: ";
-    cin >> y2 >> m2 >> d2;
-    Age_calculator(y1, y2, m1, m2, d1, d2);
-    
-    
-    if (Is_leap_year(y1)) {
-        cout << y1 << " was a leap year." << endl;
+void checkLeapYear(int year) {
+    if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0) {
+        cout << year << " is a leap year.\n";
     } else {
-        cout << y1 << " was not a leap year." << endl;
+        cout << year << " is not a leap year.\n";
+    }
+}
+
+void ageCalculator(int year1, int month1, int day1, int year2, int month2, int day2) {
+    int ageDay, ageMonth, ageYear = 0;
+
+    // TODO: check for invalid input, not use &&, Don't do this mistake.
+    if (day1 < 1 || day1 > 31 || day2 < 1 || day2 >31 || month1 < 1 || month1 > 12 || month2 < 1 || month2 > 12 || year1 < 0 && year2 < 0) {
+        cout << "Invalid input. Please enter valid date, month & year." << endl;
+    }
+    else {
+        ageYear = year2 - year1;
     }
 
-    if (Is_leap_year(y2)) {
-        cout << y2 << " is a leap year." << endl;
+    if (day1 > day2) {
+        ageDay = (day2 + 30) - day1;
+        --month2;
     } else {
-        cout << y2 << " is not a leap year." << endl;
+        ageDay = day2 - day1;
     }
 
+    if (month1 > month2) {
+        ageMonth = (month2 + 12) - month1;
+        --ageYear;
+    } else {
+        ageMonth = month2 - month1;
+    }
+
+    cout << "Your age is: " << ageYear << " years, " << ageMonth << " months and " << ageDay << " days." << endl;
+}
+
+int main( ) {
+    int year1, year2, month1, month2, day1, day2;
+    cout << "***********************************" << endl;
+    cout << "*         Age Calculator          *" << endl;
+    cout << "***********************************" << endl;
+    cout << "Enter your date of birth (YYYY MM DD): ";
+    cin >> year1 >> month1 >> day1;
+    cout << "Enter the current date (YYYY MM DD): ";
+    cin >> year2 >> month2 >> day2;
+    ageCalculator(year1, month1, day1, year2, month2, day2);
+    checkLeapYear(year1);
+    checkLeapYear(year2);
+    return 0;
 }
