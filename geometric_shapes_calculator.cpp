@@ -20,12 +20,13 @@ float areaOfSquare(int side) {
 
 int main() {
     int choice;
+    while (true) { // Here I have used an infinite loop to keep the program running until the user chooses to exit
     cout << "Choose an option:" << endl;
     cout << "1. Calculate the Area of a Circle" << endl;
     cout << "2. Calculate the Area of a Rectangle" << endl;
     cout << "3. Calculate the Area of a Triangle" << endl;
     cout << "4. Calculate the Area of a Square" << endl;
-    cout << "4. Quit" << endl;
+    cout << "5. Quit" << endl;
     cout << "\nEnter your choice: ";
     cin >> choice;
 
@@ -64,9 +65,11 @@ int main() {
         }
         case 5: {
             cout << "Goodbye!" << endl;
-            break;
+            return 0; // Here by returning 0 the program will terminate
         }
         default:
             cout << "Invalid choice!" << endl;
     }
+    }
+
 }
