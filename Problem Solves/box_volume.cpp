@@ -47,10 +47,10 @@ class Box {
 int main() {
     Box b;
     cout << "Enter length, breadth and height of box: ";
-    int l, b, h;
-    cin >> l >> b >> h;
+    float l, c, h;
+    cin >> l >> c >> h;
     b.setLength(l);
-    b.setBreadth(b);
+    b.setBreadth(c);
     b.setHeight(h);
     cout << b.getLength() << endl;
     cout << b.getBreadth() << endl;
